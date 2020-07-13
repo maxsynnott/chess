@@ -37,7 +37,11 @@ router.get('/:id', (req, res, next) => {
 router.post('/', (req, res) => {
 	const query = knex
 		.returning('*')
-		.insert({})
+		.insert({
+			// To be replaced with matchmaking logic
+			'white_user_id': 1,
+      'black_user_id': 2
+    })
 		.into('matches');
 
 	query.then((match) => {
@@ -62,7 +66,7 @@ router.post('/run', (req, res) => {
 			return knex('matches')
 				.returning('*')
 				.where('id', req.body.id)
-				.update(data)
+				.update(data);
 		})
 		.then(matches => res.json(matches[0])) // then return the match as json
 });

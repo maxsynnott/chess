@@ -5,7 +5,10 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('matches').insert([
-        {}, // Inits a single match with default values
+        {
+        	'white_user_id': 1,
+        	'black_user_id': 2
+        }, // Inits a single match
       ]);
     });
 };
