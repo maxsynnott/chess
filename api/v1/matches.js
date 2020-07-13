@@ -2,10 +2,14 @@ const express = require('express');
 
 const router = express.Router();
 
+const knex = require('../../db/knex');
+
 router.get('/', (req, res) => {
-	res.json({
-		message: "matches"
-	})
-})
+	const query = knex('matches');
+
+	query.then((matches) => {
+		res.json(matches);
+	});
+});
 
 module.exports = router;

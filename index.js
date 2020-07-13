@@ -4,9 +4,9 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-const matches = require('./api/v1/matches');
-
 const app = express();
+
+const matches = require('./api/v1/matches');
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
