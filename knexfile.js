@@ -2,7 +2,7 @@
 
 module.exports = {
   development: {
-    client: 'sqlite3',
-    filename: 'postgres://localhost/botletics_chess'
+    client: 'pg',
+    connection: 'postgres://maxsynnott:password@localhost/botletics_chess'
   }
 };
