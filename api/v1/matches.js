@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
 	})
 })
 
-// run match (Too nested and cofusing, rework this)
+// run match
 router.post('/run', (req, res) => {
 	const { runMatch } = require('../../services/matches');
 
@@ -56,19 +56,15 @@ router.post('/run', (req, res) => {
 		.limit(1)
 		.first();
 
-	// Fetch match
-	// then run the match
-	// then update the match
-	// then display the match as json
-	query
-		.then(runMatch)
-		.then((data) => {
+	query // Fetch match
+		.then(runMatch) // then run the match (equivalent to: match => runMatch(match))
+		.then((data) => { // then update the match
 			return knex('matches')
 				.returning('*')
 				.where('id', req.body.id)
 				.update(data)
 		})
-		.then(matches => res.json(matches[0]))
+		.then(matches => res.json(matches[0])) // then return the match as json
 });
 
 module.exports = router;
