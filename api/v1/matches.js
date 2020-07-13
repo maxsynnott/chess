@@ -20,7 +20,7 @@ router.get('/:id', (req, res, next) => {
 		.from('matches')
 		.where('id', req.params.id)
 		.limit(1)
-		.first()
+		.first();
 
 	query.then((match) => {
 		if (match) {
@@ -30,5 +30,16 @@ router.get('/:id', (req, res, next) => {
 		}
 	})
 });
+
+router.post('/', (req, res) => {
+	const query = knex
+		.returning('*')
+		.insert({})
+		.into('matches');
+
+	query.then((match) => {
+		res.json(match)
+	})
+})
 
 module.exports = router;
