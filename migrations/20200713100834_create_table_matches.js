@@ -2,7 +2,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('matches', (table) => {
   	table.increments();
-  	table.string('fen');
+  	table.string('fen').defaultTo('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1');
   });
 };
 
