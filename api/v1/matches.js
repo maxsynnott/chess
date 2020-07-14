@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
 		.into('matches');
 
 	query.then((match) => {
-		res.json(match)
+		res.json(match[0])
 	})
 })
 
